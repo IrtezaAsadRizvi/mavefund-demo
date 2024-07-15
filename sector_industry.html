@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google analytics -->
+    <script type="text/plain" data-cookie-consent="tracking" async
+        src="https://www.googletagmanager.com/gtag/js?id=G-4MX52W1M9P"></script>
+    <script type="text/plain" data-cookie-consent="tracking">
+      window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-4MX52W1M9P');
+    </script>
+    <!-- end of Google analytics-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Search Engine meta tags -->
+    <meta name="title" content="Mave Fund: Wide-ranging Mecroeconomics Data" />
+    <meta name="description"
+        content="Supercharge your investment journey with Mave Fund's cutting-edge financial analysis tools. Gain a competitive edge with expert insights on inflation expectations, Treasury bills, Securities Held Outright, Consumer Index, Geopolitical index, Fed effective Rate, and Unemployment rate. Experience it today!" />
+    <meta name="keywords"
+        content="Inflation expectation, Treasury bills, Securities Held Outreight, Consumer Index, Geopolitical index, Fed effective Rate, Unemployment rate" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="1 days" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mavefund.com/" />
+    <meta property="og:title" content="Mave Fund: Wide-ranging Mecroeconomics Data" />
+    <meta property="og:description"
+        content="Supercharge your investment journey with Mave Fund's cutting-edge financial analysis tools. Gain a competitive edge with expert insights on inflation expectations, Treasury bills, Securities Held Outright, Consumer Index, Geopolitical index, Fed effective Rate, and Unemployment rate. Experience it today!" />
+    <meta property="og:image" content="https://mavefund.com/static/image/banner.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mavefund.com/" />
+    <meta property="twitter:title" content="Mave Fund: Wide-ranging Mecroeconomics Data" />
+    <meta property="twitter:description"
+        content="Supercharge your investment journey with Mave Fund's cutting-edge financial analysis tools. Gain a competitive edge with expert insights on inflation expectations, Treasury bills, Securities Held Outright, Consumer Index, Geopolitical index, Fed effective Rate, and Unemployment rate. Experience it today!" />
+    <meta property="twitter:image" content="static/image/banner.png" />
+    <!-- End of Search Engine meta tags -->
+
+    <link href="static/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="static/css/site.css" rel="stylesheet" />
+    <link href="static/css/signin.css" rel="stylesheet" />
+    <link href="static/css/search.css" rel="stylesheet" />
+    <link href="static/css/premium.css" rel="stylesheet" />
+    <link href="static/css/macroeconomics.css" rel="stylesheet" />
+    <link href="static/css/sector_industry.css" rel="stylesheet" />
+
+    <!-- Bootstrap Table CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" />
+    <link href="static/css/table.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.js" integrity="sha512-L6yov5P1r9QnZX2ZRiq+XBLsm1GQ38zfSDJ6gy3pKmPCqkWvK2nz8Ojlju9q36+zOsMmMB+hYgGrJtJWo4Gy/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js" defer></script>
+    <script src="/static/js/mavefund.js" defer></script>
+    <script src="static/js/site.js" defer></script>
+    <script src="static/js/search.js" defer></script>
+
+    <script src="/static/js/d3.min.js"></script>
+    <script src="/static/js/d3.v4.js"></script>
+    <script src="/static/js/radarChart.js"></script>
+    <script src="/static/js/sector_industry.js"></script>
+    <link rel="stylesheet" href="/static/css/radarChart.css">
+
+    <!-- ChartJS V2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css"
+        integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
+        integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--  -->
+
+    <title>Mavefund Index</title>
+    <style>
+        /* Add some basic styling */
+        .container {
+            /* max-width: 800px; */
+            margin: 0 auto;
+        }
+
+        h2 {
+            cursor: pointer;
+            /* Add cursor pointer for clickable h2 elements */
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: none;
+            /* Initially hide the industry lists */
+        }
+
+        li {
+            padding-top: 0px !important;
+            border-bottom: none !important;
+        }
+
+        .industry-list.show {
+            display: block !important;
+            /* Override display:none for showing the industry lists */
+        }
+    </style>
+
+</head>
+
+<body class="text-center">
+    {% include 'navbar.html' %}
+    <!-- {% include 'navbar.html' %} -->
+    <!-- {% include 'socialmedia.html' %} -->
+    <div class="main-container">
+        <section class="left-sidebar">
+            <div class="content">
+                <div class="filter-title">
+                    <image src='/static/image/crown.png' class='crown'>
+                        <p class="title">Top Companies</p>
+                </div>
+                <div class="container" id="sectors-container"></div>
+            </div>
+            <div class="toggle">
+                <i id="toggleIcon" class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+            </div>
+        </section>
+
+        <section id="body-container-wrapper">
+            <div class="inside-body-container-wrapper">
+                <div class="body-container">
+                    <div class="upper"></div>
+                    <div class="center">
+                        <div class="left-section">
+                            <div class="left-section-first-container">
+                                <div class="sector-industry">
+                                    <p>
+                                        Sector: <span id="sector-placeholder"></span>
+                                        <br>
+                                        Industry: <span id="industry-placeholder"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="left-section-second-container">
+                                <div class="radar-container">
+                                    <div class="radarChart"></div>
+                                    <div id="tooltip" style="opacity:0">
+                                        <p id="heading" style="font-size:16px;"><span id="number"
+                                                style="color:#cccccc;"></span><span id="heading_text"></span></p>
+                                        <p id="text" style="font-size:12px;"></p>
+                                        <div style="height:20px;"></div>
+                                        <p><span id="analysis" style="font-size:12px;">Score</span> <span
+                                                id="analysis_number" style="font-size:12px;color:#cccccc;"></span></p>
+                                        <div id="icons" style="margin-top:5px;font-size:18px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="left-section-third-container">
+                                <div class="radar-description">
+                                    <h3><span id="companyname-placeholder"></span></h3>
+                                    <p><span id="ticker-placeholder"></span></p>
+                                    <p>US$<span id="marketcap-placeholder"></span></p>
+                                    <p>Avg Stock Growth(5Y): <span id="avggrowth5y-placeholder"></span>%</p>
+                                    <div class="ticker-stars">
+                                        <span class="stars-container" id="stars">
+                                        </span>
+                                        <span class="star-explanation">The rating considers a company's earnings growth,
+                                            return on
+                                            equity, leverage, share buybacks, and net margin over the last six
+                                            years.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="right-section">
+                            <div class="descriptions">
+                                <span id="full-description"></span>
+                                <span id="short-description"></span>
+                                <span id="read-more" class="read-more-link" onclick="toggleDescription()">Read
+                                    More</span>
+                                <p id="item-description"></p>
+                                <p id="item-growth"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lower"></div>
+                    <!-- creating space before and after -->
+
+                </div>
+            </div>
+        </section>
+    </div>
+    {% include 'footer.html' %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+
+            const sectorsContainer = document.getElementById("sectors-container");
+            let currentSectorIndex = 0;
+            let currentIndustryIndex = 0;
+            let sectors = [];
+            let industries = [];
+
+            try {
+                const response = await fetch("https://mavefund.com/api/v1/info/get_sector_industry");
+                // const response = await fetch("http://localhost:8000/api/v1/info/get_sector_industry");
+                const data = await response.json();
+
+                sectors = Object.keys(data);
+                industries = sectors.map(sector => data[sector]);
+
+                let firstSector, firstIndustry, firstSectorHeading;
+
+                for (const sector of Object.keys(data)) {
+                    const sectorDiv = document.createElement("div");
+                    sectorDiv.classList.add("sector");
+
+                    const sectorHeading = document.createElement("h2");
+                    sectorHeading.textContent = sector;
+
+                    const industryList = document.createElement("ul");
+                    industryList.classList.add("industry-list");
+
+                    // Capture the first sector heading
+                    if (!firstSectorHeading) {
+                        firstSectorHeading = sectorHeading;
+                    }
+                    const toggleIcon = document.getElementById("toggleIcon");
+
+                    data[sector].forEach((industry, index) => {
+                        const industryItem = document.createElement("li");
+                        industryItem.textContent = industry;
+                        industryList.appendChild(industryItem);
+
+                        industryItem.addEventListener("click", () => {
+                            fetchDataFromAPI(sector, industry);
+                            // Remove 'nav-selected' class from previously selected item
+                            const prevSelected = document.querySelector(".nav-selected");
+                            if (prevSelected) {
+                                prevSelected.classList.remove("nav-selected");
+                            }
+                            // Add 'nav-selected' class to the clicked item
+                            industryItem.classList.add("nav-selected");
+                            toggleIcon.click();
+                        });
+
+                        if (index === 0 && !firstIndustry) {
+                            firstSector = sector;
+                            firstIndustry = industry;
+                            industryItem.classList.add("nav-selected");
+                        }
+                    });
+
+                    sectorDiv.appendChild(sectorHeading);
+                    sectorDiv.appendChild(industryList);
+
+                    sectorHeading.addEventListener("click", () => {
+                        const currentlyOpen = document.querySelector(".industry-list.show");
+                        if (currentlyOpen && currentlyOpen !== industryList) {
+                            currentlyOpen.classList.remove("show");
+                        }
+                        industryList.classList.toggle("show");
+                    });
+
+                    sectorsContainer.appendChild(sectorDiv);
+                }
+
+                // Initially load the first sector and its first industry and simulate a click on the first sector heading
+                if (firstSectorHeading) {
+                    firstSectorHeading.click();
+                }
+
+                if (firstSector && firstIndustry) {
+                    fetchDataFromAPI(firstSector, firstIndustry);
+                }
+                //  causing errors
+                //   dataContainer = document.querySelector('.body-container');
+                //   dataContainer.addEventListener('scroll', function() {
+                //     if (dataContainer.scrollTop === 0) {
+                //       console.log('scrolled top')
+                //       loadPreviousSectorIndustry();
+                //     } else if (dataContainer.scrollHeight - dataContainer.scrollTop === dataContainer.clientHeight) {
+                //       console.log('scrolled bottom')
+                //         loadNextSectorIndustry();
+                //     }else{
+                //       console.log(dataContainer.scrollHeight);
+                //       console.log(dataContainer.scrollTop);
+                //       console.log(dataContainer.clientHeight);
+                //     }
+                // });
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                const errorMessage = document.createElement("p");
+                errorMessage.textContent = "Error fetching data. Please try again later.";
+                sectorsContainer.appendChild(errorMessage);
+            }
+
+
+            // function loadNextSectorIndustry() {
+            //   currentIndustryIndex++;
+            //   if (currentIndustryIndex >= industries[currentSectorIndex].length) {
+            //       currentSectorIndex++;
+            //       currentIndustryIndex = 0;
+            //   }
+
+            //   if (currentSectorIndex < sectors.length) {
+            //       loadSector(currentSectorIndex, currentIndustryIndex);
+            //   }
+            // }
+
+            // function loadPreviousSectorIndustry() {
+            //     currentIndustryIndex--;
+            //     if (currentIndustryIndex < 0) {
+            //         currentSectorIndex--;
+            //         if (currentSectorIndex < 0) {
+            //             currentSectorIndex = 0;
+            //         }
+            //         currentIndustryIndex = industries[currentSectorIndex].length - 1;
+            //     }
+
+            //     if (currentSectorIndex >= 0) {
+            //         loadSector(currentSectorIndex, currentIndustryIndex);
+            //     }
+            // }
+        });
+
+    </script>
+
+    <script>
+        // Simulating API response
+        // Function to update HTML content with fetched data
+        function updateCompanyInfo(data) {
+            if (data && data.length > 0) {
+                const companyData = data[0];
+                document.getElementById('sector-placeholder').textContent = companyData.sector;
+                document.getElementById('industry-placeholder').textContent = companyData.industry;
+                document.getElementById('stars').setAttribute('data-star', companyData.rating);
+                document.getElementById('companyname-placeholder').textContent = companyData.company_name;
+                document.getElementById('ticker-placeholder').innerHTML = `<a href="https://mavefund.com/company?key=${companyData.ticker}">${companyData.ticker}</a>`;
+                document.getElementById('full-description').textContent = companyData.description;
+                document.getElementById('item-description').innerHTML = `${companyData.company_name} has been evaluated based on its fundamentals over the past five years. 
+          Companies with high ratings typically demonstrate growing earnings, substantial profit margins, conservative leverage, 
+          consistently high returns on equity, and a sustained practice of share repurchases.`
+                document.getElementById('item-growth').innerHTML = `Over the last five years, ${companyData.company_name} has achieved an average annual return of ${companyData.avg_last_five}%. This year, 
+          it holds the highest rating in its industry.`
+                createRadarchart(companyData.ticker, "radarChart", "tooltip");
+                addStarsFromData();
+                initialDescription();
+                // Get the market cap value
+                let marketCap = companyData.market_cap;
+                if (marketCap >= 1000000) {
+                    document.getElementById('marketcap-placeholder').textContent = (marketCap / 1000000).toFixed(2) + ' trillion';
+                } else if (marketCap >= 1000) {
+                    document.getElementById('marketcap-placeholder').textContent = (marketCap / 1000).toFixed(2) + ' billion';
+                } else {
+                    document.getElementById('marketcap-placeholder').textContent = marketCap + ' million';
+                }
+                document.getElementById('avggrowth5y-placeholder').textContent = companyData.avg_last_five;
+
+            } else {
+                console.error('Error fetching company data.');
+            }
+        }
+
+        function addStarsFromData() {
+            const starsDiv = document.getElementById('stars');
+            let value = parseFloat(starsDiv.getAttribute('data-star')) || 0;
+
+            starsDiv.innerHTML = ''; // Clear existing stars
+
+            if (value < 1) {
+                value = 1;
+            }
+
+            mod_value = value % 1
+            mod_value = mod_value.toFixed(2)
+
+            const fullStars = Math.floor(value);
+            const halfStar = mod_value >= 0.25 && mod_value <= 0.70;
+            const quarterStar = mod_value >= 0.71;
+
+            for (let i = 0; i < fullStars; i++) {
+                const starImage = document.createElement('img');
+                starImage.src = '/static/star_filled_icon_200260_gold.png';
+                starsDiv.appendChild(starImage); // Full star
+            }
+
+            if (halfStar) {
+                const starImage = document.createElement('img');
+                starImage.src = '/static/image/star/star_one_quarter_filled_icon_199689_gold.png';
+                starsDiv.appendChild(starImage); // Half star
+            }
+
+            if (quarterStar) {
+                const starImage = document.createElement('img');
+                starImage.src = '/static/image/star/star_three_quarter_filled_icon_200261_gold.png';
+                starsDiv.appendChild(starImage); // Quarter star
+            }
+
+            // Calculate the number of empty stars needed to make 5 stars
+            const emptyStars = 5 - (fullStars + (halfStar ? 1 : 0) + (quarterStar ? 1 : 0));
+
+            for (let i = 0; i < emptyStars; i++) {
+                const emptyStarImage = document.createElement('img');
+                emptyStarImage.src = '/static/image/gold-star.png';
+                starsDiv.appendChild(emptyStarImage); // Empty star
+            }
+
+
+            // Add the numerical rating value
+            const ratingText = document.createElement('span');
+            ratingText.textContent = value + '/' + '5';
+            ratingText.classList.add('rating-text'); // Apply the CSS class
+            starsDiv.appendChild(ratingText);
+        }
+
+        // Fetch data from API
+        function fetchDataFromAPI(sector, industry) {
+            const apiUrl = `https://mavefund.com/api/v1/info/get_sector_industry_detail?sector=${encodeURIComponent(sector)}&industry=${encodeURIComponent(industry)}`
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => updateCompanyInfo(data))
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    </script>
+
+
+    <script>
+        // JavaScript function to toggle between full and shortened description
+        function toggleDescription() {
+            var fullDescription = document.getElementById("full-description");
+            var shortDescription = document.getElementById("short-description");
+            var readMoreLink = document.getElementById("read-more");
+
+            if (fullDescription.style.display === "none") {
+                fullDescription.style.display = "inline";
+                shortDescription.style.display = "none";
+                readMoreLink.innerHTML = "Read Less";
+            } else {
+                fullDescription.style.display = "none";
+                shortDescription.style.display = "inline";
+                readMoreLink.innerHTML = "Read More";
+            }
+        }
+
+        // Display the shortened description initially
+        function initialDescription() {
+            var fullDescription = document.getElementById("full-description");
+            var shortDescription = document.getElementById("short-description");
+            var readMoreLink = document.getElementById("read-more");
+
+            if (fullDescription && shortDescription && readMoreLink) {
+                var maxLength = 300; // Set the maximum length for the shortened description
+                var descriptionText = fullDescription.innerText;
+
+                if (descriptionText.length > maxLength) {
+                    shortDescription.innerText = descriptionText.substring(0, maxLength) + " ...";
+                    fullDescription.style.display = "none";
+                    shortDescription.style.display = "inline";
+                    readMoreLink.style.display = "inline";
+                } else {
+                    // If the description is already short, hide the "Read More" link
+                    readMoreLink.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    <!-- Bootstrap Table JavaScript -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <!-- Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
+    <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js"
+        charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+        document.addEventListener("DOMContentLoaded", function () {
+            cookieconsent.run({
+                notice_banner_type: "simple",
+                consent_type: "express",
+                palette: "light",
+                language: "en",
+                page_load_consent_levels: ["strictly-necessary"],
+                notice_banner_reject_button_hide: false,
+                preferences_center_close_button_hide: false,
+                page_refresh_confirmation_buttons: false,
+                website_privacy_policy_url: "https://mavefund.com/privacy.html",
+            });
+        });
+    </script>
+    <noscript>
+        Cookie Consent by
+        <a href="https://www.freeprivacypolicy.com/" rel="noopener">Free Privacy Policy Generator
+        </a>
+    </noscript>
+    <!-- End Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
+    <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+    <!-- Add this in footer -->
+    <!--  <a href="#" id="open_preferences_center">Update cookies preferences</a> -->
+</body>
+
+
+</html>
