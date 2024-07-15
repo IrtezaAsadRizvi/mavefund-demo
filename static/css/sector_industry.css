@@ -115,7 +115,6 @@
 }
 
 .body-container .left-section .left-section-first-container {
-  height: 15%;
   width: 100%;
   display: flex;
   justify-content: left;
@@ -128,11 +127,15 @@
 .body-container .left-section .left-section-first-container .sector-industry {
   width: 80%;
   height: 100%;
-  display: flex;
-  align-items: center;
   color: white;
   font-size: 20px;
 }
+.body-container .left-section .left-section-first-container .sector-industry h2 {
+  margin-bottom: 10px;
+}
+.body-container .left-section .left-section-first-container .sector-industry p {
+  margin-top: 0px;
+} 
 
 .body-container .left-section .left-section-second-container {
   height: 60%;
@@ -257,13 +260,14 @@
 @media screen and (max-width: 750px) {
   .main-container {
     align-items: unset;
-    height: 90vh;
+    /* height: 90vh; */
   }
   .toggle {
     font-size: 30px;
     display: block;
-    position: relative;
-    left: 95px;
+    position: absolute;
+    left: calc(100% + 20px);
+    top: 30dvh;
     z-index: 2;
   }
 
@@ -283,7 +287,7 @@
       flex-direction: column;
 
       .left-section {
-        height: 60%;
+        height: auto;
         width: 100%;
         .left-section-first-container {
           margin-bottom: 30px;
@@ -311,15 +315,18 @@
     margin: 0;
     padding: 0;
     top: 20%;
-    left: -91%;
+    left: calc(-100vw + 55px);
     border: solid 1px;
-    position: absolute;
+    position: fixed;
     z-index: 100;
-    width: 90%;
+    width: calc(100dvw - 60px);
     transition: left 0.5s ease;
   }
   .left-sidebar.show {
     left: 2%;
+  }
+  .left-sidebar.show .toggle i {
+    transform: scale(-1, -1);
   }
 
   .footer-container {
