@@ -12,14 +12,13 @@
     background-color: rgb(34, 38, 47);
     padding: 0 !important;
     margin: 0 !important;
+    max-height: 650px;
 }
-
 .sector-index-wrapper {
     overflow-y: hidden;
 }
-
-.sector-content-wrapper {
-    /* padding-right: 25px !important; */
+.info-container {
+    padding: 30px 10px;
 }
 
 .toggle {
@@ -72,7 +71,9 @@
     scrollbar-width: none;
     /* Firefox */
 }
-
+.sector-industry {
+    padding: 10px;
+}
 .sector-industry h2 {
     margin-bottom: 10px;
 }
@@ -86,6 +87,7 @@
 .radarChart {
     width: 100%;
     height: auto;
+    max-width: 350px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -175,6 +177,12 @@
     max-height: 100%;
 }
 
+@media screen and (max-width: 992px) {
+    .main-container {
+        max-height: unset !important;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .main-container {
         width: 100dvw !important;
@@ -216,12 +224,17 @@
         margin: 0;
         padding: 0;
         left: calc(-100vw + 45px);
-        border: solid 1px;
         z-index: 100;
         width: calc(100% - 50px);
         transition: left 0.5s ease;
+        height: 90dvh;
+        position: fixed;
+    }
+    .sector-index .content {
+        width: 100%;
         height: 100%;
-        position: absolute;
+        overflow: auto;
+        border: 1px solid #fff;
     }
 
     .sector-index.show {
