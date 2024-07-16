@@ -1,25 +1,6 @@
-  h2 {
-    cursor: pointer;
-  }
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-    display: none;
-  }
-
-  li {
-    padding-top: 0px !important;
-    border-bottom: none !important;
-  }
-
-  .industry-list.show {
-    display: block !important;
-  }
 .container {
     min-width: unset !important;
     max-width: 100dvw !important;
-    margin: 0 auto;
 }
 .main-container {
     width: 96vw;
